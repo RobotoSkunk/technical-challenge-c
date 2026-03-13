@@ -16,7 +16,7 @@
 		"downlevelIteration": true
 	},
 	"include": [
-		"src/**/*"
+		"assets/**/*"
 	],
 	"typeAcquisition": {
 		"include": [
