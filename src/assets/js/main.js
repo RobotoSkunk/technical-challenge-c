@@ -29,7 +29,7 @@ async function loadCharacters()
 
 		$('#error')
 			.removeClass('d-none')
-			.text(`: ${error.responseJSON.error}`)
+			.text(`: ${error.responseJSON ? error.responseJSON.error : 'Something went wrong, try reloading the page.'}`)
 			.prepend($('<b>Error</b>'))
 			.prepend($('<i class="bi bi-exclamation-circle-fill p-1"></i>'));
 	} finally {
