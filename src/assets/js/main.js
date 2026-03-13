@@ -3,16 +3,8 @@ const pageLabel = $('#page');
 const maxPagesLabel = $('#max-pages');
 const charactersContainer = $('#characters-list');
 
-
-function generateCard(character)
-{
-	const domElement = $('<div></div>', { class: 'col' }).text(character.name);
-	const imgElement = $('<img>', { src: character.image });
-
-	domElement.append(imgElement);
-
-	return domElement;
-}
+let page = 1;
+let maxPage = 1;
 
 function getNewRow()
 {
@@ -22,10 +14,7 @@ function getNewRow()
 	return row;
 };
 
-/**
- * @param {number} page 
- */
-async function loadCharacters(page = 1)
+async function loadCharacters()
 {
 	let apiResponse;
 
@@ -36,26 +25,36 @@ async function loadCharacters(page = 1)
 		return;
 	}
 
-	let columnCount = 0;
-	let currentRow = getNewRow();
 	charactersContainer.empty();
 
+	maxPage = apiResponse.info.pages;
+
 	pageLabel.text(page);
-	maxPagesLabel.text(apiResponse.info.pages);
+	maxPagesLabel.text(maxPage);
 
 	for (const character of apiResponse.results) {
-		const card = generateCard(character);
-		currentRow.append(card);
-
-		if (++columnCount >= 3) {
-			columnCount = 0;
-			currentRow = getNewRow();
-		}
+		const card = new Card(character);
+		charactersContainer.append(card.element);
 	}
 }
 
+loadCharacters();
 
-(async () =>
+
+$('#page-next').on('click', async () =>
 {
+	if (++page > maxPage) {
+		page--;
+	}
+
 	await loadCharacters();
-})();
+});
+
+$('#page-prev').on('click', async () =>
+{
+	if (--page <= 0) {
+		page++;
+	}
+
+	await loadCharacters();
+});

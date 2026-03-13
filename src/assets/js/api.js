@@ -36,10 +36,11 @@ class API
 	/**
 	 * 
 	 * @param {number} page 
+	 * @param {string} name 
 	 */
-	static async fetchAll(page)
+	static async fetchAll(page, name)
 	{
-		const apiResponse = await API.#get('character', { page });
+		const apiResponse = await API.#get('character', { page, name });
 
 		return apiResponse;
 	}
