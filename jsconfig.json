@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"outDir": "js",
+
+		"target": "ES6",
+		"lib": [
+			"ES5",
+			"ES6",
+			"DOM"
+		],
+
+		"allowJs": true,
+		"module": "CommonJS",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"downlevelIteration": true
+	},
+	"include": [
+		"src/**/*"
+	],
+	"typeAcquisition": {
+		"include": [
+			"jquery"
+		]
+	}
+}
