@@ -16,8 +16,8 @@
 		"downlevelIteration": true
 	},
 	"include": [
-		"src/**/*"
-	],
+		"assets/**/*"
+, "assets"	],
 	"typeAcquisition": {
 		"include": [
 			"jquery"
