@@ -6,13 +6,6 @@ let maxPage = 1;
 let nameFilter = '';
 let inputTimeoutId = 0;
 
-function getNewRow()
-{
-	let row = $('<div></div>', { class: 'row' });
-	charactersContainer.append(row);
-
-	return row;
-};
 
 async function loadCharacters()
 {
@@ -52,6 +45,7 @@ async function loadCharacters()
 loadCharacters();
 
 
+// Events
 $('#page-next').on('click', async () =>
 {
 	if (++page > maxPage) {
