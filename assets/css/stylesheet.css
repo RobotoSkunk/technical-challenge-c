@@ -23,3 +23,17 @@ html {
 		scale: 0.95;
 	}
 }
+
+
+@media screen and (max-width: 710px) {
+	nav {
+		flex-direction: column;
+	}
+}
+
+
+@media screen and (max-width: 500px) {
+	#searchbar {
+		flex-direction: column;
+	}
+}
