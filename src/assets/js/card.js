@@ -7,11 +7,12 @@ class Card
 	constructor(character)
 	{
 		this.#character = character;
-		this.#card = $('<div></div>', {
+		this.#card = $('<button></button>', {
 			class: 'col card m-2 p-0',
 			style: 'min-width: 302px; max-width: 302px',
 		});
 
+		// The picture has a fixed size to avoid layout shift when loading
 		const image = $('<img>', {
 			class: 'card-img-top',
 			src: character.image,
@@ -41,11 +42,13 @@ class Card
 
 			const species = $('<li></li>', {
 				class: 'list-group-item',
-			}).text(`Species: ${character.species}`);
+			}).text(`: ${character.species}`)
+			.prepend($('<b>Species</b>'));
 
 			const status = $('<li></li>', {
-				class: 'list-group-item',
-			}).text(`Status: ${character.status}`);
+				class: 'list-group-item text-capitalize',
+			}).text(`: ${character.status}`)
+			.prepend($('<b>Status</b>'));
 
 			ul.append(species, status);
 			body.append(ul);
