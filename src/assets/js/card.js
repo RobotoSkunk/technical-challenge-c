@@ -8,13 +8,12 @@ class Card
 	{
 		this.#character = character;
 		this.#card = $('<button></button>', {
-			class: 'col card m-2 p-0',
-			style: 'min-width: 302px; max-width: 302px',
+			class: 'col card m-2 p-0 char-card',
 		});
 
 		// The picture has a fixed size to avoid layout shift when loading
 		const image = $('<img>', {
-			class: 'card-img-top',
+			class: 'card-img-top portrait',
 			src: character.image,
 			alt: `Picture of ${character.name}`,
 			width: '300',
