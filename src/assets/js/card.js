@@ -19,6 +19,7 @@ class Card
 			alt: `Picture of ${character.name}`,
 			width: '300',
 			height: '300',
+			draggable: 'false',
 		});
 
 		const header = $('<div></div>', {
