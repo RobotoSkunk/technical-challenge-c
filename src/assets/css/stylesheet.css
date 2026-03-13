@@ -1,0 +1,13 @@
+
+body {
+	background: var(--bs-body-bg);
+	color: var(--bs-body-color);
+}
+
+nav {
+	background: var(--bs-primary);
+	color: var(--bs-body-bg);
+
+	font-size: 1.6em;
+	text-align: center;
+}
