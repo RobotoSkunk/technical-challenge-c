@@ -2,13 +2,13 @@
 class Card
 {
 	#card;
-	#character;
 
 	constructor(character)
 	{
-		this.#character = character;
 		this.#card = $('<button></button>', {
 			class: 'col card m-2 p-0 char-card',
+			'data-bs-toggle': 'modal',
+			'data-bs-target': '#modal',
 		});
 
 		// The picture has a fixed size to avoid layout shift when loading
@@ -26,7 +26,7 @@ class Card
 		});
 		{
 			const title = $('<h5></h5>', {
-				class: 'card-title',
+				class: 'card-title fw-bold',
 			}).text(character.name);
 
 			header.append(title);
@@ -37,7 +37,7 @@ class Card
 		});
 		{
 			const ul = $('<ul></ul>', {
-				class: 'list-group list-group-flush',
+				class: 'list-group list-group-flush text-start',
 			});
 
 			const species = $('<li></li>', {
@@ -54,17 +54,25 @@ class Card
 			body.append(ul);
 		}
 
-		this.#card.append(image, header, body);
+		this.#card
+			.append(image, header, body)
+			.on('click', () =>
+			{
+				$('#modal-title').text(character.name);
+				$('#modal-picture').attr('src', character.image);
+
+				$('#modal-content-species').text(character.species);
+				$('#modal-content-status').text(character.status);
+				$('#modal-content-gender').text(character.gender);
+				$('#modal-content-origin-name').text(character.origin.name);
+				$('#modal-content-location-name').text(character.location.name);
+			});
 	}
 
 	get element()
 	{
 		return this.#card;
 	}
-
-	get data()
-	{
-		return this.#character;
-	}
 }
 
+// Being sincere, a class was useless in this case.

@@ -8,10 +8,18 @@ html {
 	max-width: 302px;
 
 	scale: 1;
-	transition: scale 0.35s ease;
+	transition: scale 0.25s ease;
+
+	& img {
+		background-image: url(/assets/img/default.webp);
+	}
 
 	&:hover,
 	&:focus-visible {
 		scale: 1.05;
+	}
+
+	&:active {
+		scale: 0.95;
 	}
 }
